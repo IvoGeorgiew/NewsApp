@@ -16,6 +16,9 @@ workflows:
           echo "APIALLNEWS=$APIALLNEWS" >> "$FCI_BUILD_DIR/android/local.properties"
           echo "APIKEY=$APIKEY" >> "$FCI_BUILD_DIR/android/local.properties"
           echo "APINEWS=$APINEWS" >> "$FCI_BUILD_DIR/android/local.properties"
+      - name: Set up app/build.gradle
+        script: |
+          mv ./support-files/build.gradle android/app
     artifacts:
       - android/app/build/outputs/**/*.apk
 
@@ -25,10 +28,13 @@ workflows:
     environment:
       groups:
         - env
-      node: latest
     scripts:
       - name: Install npm dependencies
         script: npm install
-      # Add any additional iOS-specific build steps here
+      - name: Set up keys
+        script: |
+          echo "APIALLNEWS=$APIALLNEWS" >> "$FCI_BUILD_DIR/ios/Runner/Config.xcconfig"
+          echo "APIKEY=$APIKEY" >> "$FCI_BUILD_DIR/ios/Runner/Config.xcconfig"
+          echo "APINEWS=$APINEWS" >> "$FCI_BUILD_DIR/ios/Runner/Config.xcconfig"
     artifacts:
       - build/ios/*.ipa

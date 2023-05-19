@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "AvengersApp",
-    "slug": "AvengersApp",
+    "slug": "junior-mobile-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icons/icon.png",
@@ -18,16 +18,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.codemagic.juniormobileapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.codemagic.juniormobileapp"
     },
     "web": {
       "favicon": "./assets/icons/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "64de7218-2d3b-4328-844e-8b925aac567b"
+      }
+    },
+    "owner": "vankata97"
   }
 }

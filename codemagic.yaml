@@ -18,3 +18,17 @@ workflows:
           echo "APINEWS=$APINEWS" >> "$FCI_BUILD_DIR/android/local.properties"
     artifacts:
       - android/app/build/outputs/**/*.apk
+
+  ios-workflow:
+    name: iOS Workflow
+    instance_type: mac_mini
+    environment:
+      groups:
+        - env
+      node: latest
+    scripts:
+      - name: Install npm dependencies
+        script: npm install
+      # Add any additional iOS-specific build steps here
+    artifacts:
+      - build/ios/*.ipa
